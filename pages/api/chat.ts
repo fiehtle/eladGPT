@@ -4,6 +4,7 @@ import { SupabaseVectorStore } from 'langchain/vectorstores';
 import { openai } from '@/utils/openai-client';
 import { supabaseClient } from '@/utils/supabase-client';
 import { makeChain } from '@/utils/makechain';
+import { data } from 'cheerio/lib/api/attributes';
 
 export default async function handler(
   req: NextApiRequest,

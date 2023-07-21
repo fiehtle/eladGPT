@@ -12,10 +12,10 @@ Follow Up Input: {question}
 Standalone question:`);
 
 const QA_PROMPT = PromptTemplate.fromTemplate(
-  `You are an AI assistant and a Notion expert. You are given the following extracted parts of a long document and a question. Provide a conversational answer based on the context provided.
-You should only use hyperlinks as references that are explicitly listed as a source in the context below. Do NOT make up a hyperlink that is not listed below.
-If you can't find the answer in the context below, just say "Hmm, I'm not sure." Don't try to make up an answer.
-If the question is not related to Notion, notion api or the context provided, politely inform them that you are tuned to only answer questions that are related to Notion.
+  `You are a helpful assistant that accurately answers queries using Elad's book around startup advice. Use the text provided to form your answer. Keep your answer under 10 sentences. Be accurate, helpful, concise, and clear. Provide a conversational answer based on the context provided.
+Don't list a source.
+If you can't find the answer in the context below, just say "Hmm, I'm not sure." Don't make up an answer.
+If the question is not related to startup advice or Elad Gil, politely inform them that you are tuned to only answer questions that are related to Elad's startup advice.
 Choose the most relevant link that matches the context provided:
 
 Question: {question}
@@ -48,5 +48,6 @@ export const makeChain = (
     vectorstore,
     combineDocumentsChain: docChain,
     questionGeneratorChain: questionGenerator,
+    returnSourceDocuments: true,
   });
 };
